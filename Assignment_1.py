@@ -78,7 +78,7 @@ def contact():
 
 
 
-@app.route('/u', methods=['POST'])
+@app.route('/', methods=['POST'])
 def process_url():
     url = request.form['url']
     news_data = extract_and_clean_news_text(url)
