@@ -58,7 +58,7 @@ github_admin_usernames = ["7773aakash", "atmabodha"]
 
 
 # Establish a connection to the PostgreSQL database
-conn = psycopg2.connect(host='localhost', database='url_data', user='postgres', password='#RNJ7773RNJ7773')
+conn = psycopg2.connect(host='dpg-cnmp1co21fec73986npg-a', database='url_datas', user='url_datas_user', password='lfiIGjhOT5iMJXU8ig5Isw7LApjBwnuE')
 cur = conn.cursor()
 
 # Load stop words
