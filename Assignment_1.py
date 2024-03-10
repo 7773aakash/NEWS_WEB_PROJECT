@@ -80,36 +80,32 @@ def contact():
 
 @app.route('/u', methods=['POST'])
 def process_url():
-    try:
-        url = request.form['url']
-        news_data = extract_and_clean_news_text(url)
+    url = request.form['url']
+    news_data = extract_and_clean_news_text(url)
 
-        # Access the title, cleaned text, and analysis separately
-        title = news_data['title']
-        cleaned_text = news_data['cleaned_text']
+    # Access the title, cleaned text, and analysis separately
+    title = news_data['title']
+    cleaned_text = news_data['cleaned_text']
 
-        analysis = analyze_text(cleaned_text)
+    analysis = analyze_text(cleaned_text)
 
-        # Generate word cloud
-        wordcloud_img = generate_wordcloud(cleaned_text)
-        sentiment_labels, sentiment_percentages = calculate_sentiment(cleaned_text)
-        # Generate summary
-        summary = generate_summary(cleaned_text, num_sentences=11)
+    # Generate word cloud
+    wordcloud_img = generate_wordcloud(cleaned_text)
+    sentiment_labels, sentiment_percentages = calculate_sentiment(cleaned_text)
+    # Generate summary
+    summary = generate_summary(cleaned_text, num_sentences=11)
 
-      #  Insert data into the PostgreSQL database
-        cur.execute(
-            "INSERT INTO url_summary_table (url, text, no_of_sentences, stop_words, upos_tags) VALUES (%s, %s, %s, %s, %s)",
-            (url, cleaned_text, analysis["no_of_sentences"], analysis["stop_word_count"],
-             json.dumps(analysis['upos_tags'])))
-        conn.commit()
+    # Insert data into the PostgreSQL database
+    cur.execute(
+        "INSERT INTO url_summary_table (url, text, no_of_sentences, stop_words, upos_tags) VALUES (%s, %s, %s, %s, %s)",
+        (url, cleaned_text, analysis["no_of_sentences"], analysis["stop_word_count"],
+         json.dumps(analysis['upos_tags'])))
+    conn.commit()
 
-        # Display the title and analysis on the website
-        return render_template('front.html', url=url, title=title, cleaned_text=cleaned_text, analysis=analysis,
-                               wordcloud_img=wordcloud_img, sentiment_labels=sentiment_labels,
-                               sentiment_percentages=sentiment_percentages, summary=summary)
-    except Exception as e:
-        error_message = f"Error processing URL: Please provide the correct url of THE TIMES OF INDIA"
-        return render_template('front.html', error_message=error_message)
+    # Display the title and analysis on the website
+    return render_template('front.html', url=url, title=title, cleaned_text=cleaned_text, analysis=analysis,
+                           wordcloud_img=wordcloud_img, sentiment_labels=sentiment_labels,
+                           sentiment_percentages=sentiment_percentages, summary=summary)
 
 @app.route('/history_password', methods=['GET', 'POST'])
 def history_password():
