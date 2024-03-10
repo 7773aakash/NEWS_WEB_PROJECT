@@ -68,7 +68,7 @@ cur.execute("""
         text TEXT NOT NULL,
         no_of_sentences INTEGER,
         stop_words INTEGER,
-        upos_tags JSONB
+        upos_tags JSON
     )
 """)
 conn.commit()
