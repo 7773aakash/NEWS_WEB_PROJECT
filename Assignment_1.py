@@ -273,7 +273,7 @@ def github_authorize():
             cur = conn.cursor()
             cur.execute("SELECT * FROM url_summary_table")
             history_data = cur.fetchall()
-            conn.close()
+            # conn.close()
 
 
             return render_template('history.html', history_data=history_data)
