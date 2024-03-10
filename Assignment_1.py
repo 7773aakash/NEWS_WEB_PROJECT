@@ -61,6 +61,19 @@ github_admin_usernames = ["7773aakash", "atmabodha"]
 conn = psycopg2.connect(host='dpg-cnmp1co21fec73986npg-a', database='url_datas', user='url_datas_user', password='lfiIGjhOT5iMJXU8ig5Isw7LApjBwnuE')
 cur = conn.cursor()
 
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS url_summary_table (
+        id SERIAL PRIMARY KEY,
+        url VARCHAR(2000) NOT NULL,
+        text TEXT NOT NULL,
+        no_of_sentences INTEGER,
+        stop_words INTEGER,
+        upos_tags JSONB
+    )
+""")
+conn.commit()
+
+
 # Load stop words
 stp_words = set(nltk.corpus.stopwords.words('english'))
 
