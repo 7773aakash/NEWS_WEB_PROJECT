@@ -3,7 +3,7 @@ requests==2.26.0
 beautifulsoup4==4.11.1
 nltk==3.6.5
 psycopg2==2.9.3
-wordcloud==1.10.1
+wordcloud==1.9.3
 matplotlib==3.4.3
 authlib==0.15.3
 
