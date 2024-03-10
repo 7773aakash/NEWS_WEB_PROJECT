@@ -78,7 +78,7 @@ def contact():
 
 
 
-@app.route('/', methods=['POST'])
+@app.route('/u', methods=['POST'])
 def process_url():
     try:
         url = request.form['url']
