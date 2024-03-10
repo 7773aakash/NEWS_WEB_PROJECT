@@ -63,7 +63,7 @@ cur = conn.cursor()
 
 cur.execute("""
     CREATE TABLE IF NOT EXISTS url_summary_table (
-        id SERIAL PRIMARY KEY,
+        # id SERIAL PRIMARY KEY,
         url VARCHAR(2000) NOT NULL,
         text TEXT NOT NULL,
         no_of_sentences INTEGER,
