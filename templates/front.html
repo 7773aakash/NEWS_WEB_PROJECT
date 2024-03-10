@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> News Analyzer</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f1ea1f8f;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0a0101ef;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #eb1c9cbb;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(9, 4, 4, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #060505;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #c21616;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color:green;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: blue;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Style for the About button */
+        .about-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: green;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .about-link:hover {
+            background-color: blueviolet;
+        }
+
+        /* Style for Summary and Sentimental Analysis */
+        .summary {
+            margin: 10px;
+            padding: 20px;
+           background-color: #fff;
+            border-radius: 8px;
+            border: 2px solid black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sentiment-results {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+            margin:10px;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+
+        }
+
+        .sentiment-result {
+            text-align: center;
+            flex: 1;
+            margin: 0 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 6px;
+            background-color: #fff;
+
+        }
+
+        .label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .percentage-bar {
+            height: 20px;
+            background-color: #3498db;
+            width: 0; /* Initial width, will be set dynamically */
+            border-radius: 4px;
+        }
+
+        .percentage {
+            margin-top: 5px;
+        }
+
+    .title{
+
+        border:2px solid black;
+        border-radius:10px;
+        background-color: #fff;
+        padding: 20px;
+        margin:10px;
+
+        
+
+    }
+    .time{
+
+        border-radius:15px;
+        background-color: #fff;
+        border:2px solid black;
+
+        padding: 20px;
+        margin:10px;
+
+    }
+    
+     .text1{
+        border-radius:10px;
+        background-color: #fff;
+        padding: 20px;
+        margin:10px;
+        border:2px solid black;
+
+    } 
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.box {
+    flex: 1;
+    padding: 20px;
+    margin:10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 10px;
+
+}
+<style>
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+        }
+
+        .navbar a {
+            float: right;
+            display: block;
+            color: #150202;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: rgb(1, 0, 0);
+        }
+        .history-password-button {
+    background-color: rgb(128, 49, 0);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 31%;
+    margin: 20px auto;
+    font-size: 16px;
+}
+
+.history-password-button:hover {
+    background-color: blue;
+}
+    </style>
+    
+    </style>
+</head>
+<body>
+        <!-- Navbar -->
+        <div class="navbar">
+            <a href="{{ url_for('contact') }}">Contact Us</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('github_login') }}">Admin Login with GitHub</a>
+            <a href="{{ url_for('index') }}">Home</a>
+        </div>
+    
+    
+    <h1>News Analyzer Pro</h1>
+    
+    <form method="POST" action="/">
+        <label for="url">Enter News Article URL:</label>
+        <input type="text" name="url" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    
+    <a href="/history_password" class="history-password-button">History via Password</a>
+    
+    {% if error_message %}
+    <div style="color: red; text-align: center; margin-top: 20px;">
+        <p>{{ error_message }}</p>
+    </div>
+{% endif %}
+
+    {% if url %}
+        <div class="summary">
+            <h2>Summary:</h2>
+            <p>{{ summary }}</p></div>
+            <!-- Word Cloud -->
+            <img src="{{ wordcloud_img }}" alt="Word Cloud">
+
+            <!-- Sentimental Analysis -->
+            <h2>Sentiment Analysis:</h2>
+            <div class="sentiment-results"> 
+                {% for i in range(sentiment_labels|length) %}
+                    <div class="sentiment-result">
+                        <p class="label">{{ sentiment_labels[i] }}</p>
+                        <div class="percentage-bar" style="width: {{ sentiment_percentages[i] }}%"></div>
+                        <p class="percentage">{{ sentiment_percentages[i]|round(2) }}%</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Details Section -->
+            <div class="title"><h2>Title:{{ title }}</h2></div>
+            <div class="time"><h2>Estimated Reading Time:</h2><p>{{ analysis.estimated_reading_time }} min</p></div>
+            <div class="text1"><h2>Cleaned Text:</h2><br><p>{{ cleaned_text }}</p></div>
+
+            <!-- Container for Details -->
+            <div class="container">
+                <div class="box"><h2>No. of Sentences:</h2><p>{{ analysis.no_of_sentences }}</p></div>
+                <div class="box"><h2>Word Count:</h2><p>{{ analysis.word_count }}</p></div>
+                <div class="box"><h2>Stop Word Count:</h2><p>{{ analysis.stop_word_count }}</p></div>
+                <div class="box"><h2>UPOS Tags:</h2><p>{{ analysis.upos_tags }}</p></div>
+            </div>
+        </div>
+    {% endif %}
+
+</body>
+</html>

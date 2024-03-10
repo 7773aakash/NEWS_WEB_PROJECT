@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL History</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 51px;
+            background-color: #f1ea1f8f;
+
+        }
+
+        h1 {
+            color: #000102;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #030000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #01555a;
+            color: white;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+
+        tbody tr:nth-child(even) {
+            background-color: #95e6fcdf;
+        }
+        td:last-child { /* Target the last td (UPOS Tags column) */
+            width: 15%; /* Set a fixed width for UPOS Tags column */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>URL History</h1>
+
+    
+    
+    <table>
+        <thead>
+            <tr>
+                <th>URL</th>
+                <th>Cleaned Text</th>
+                <th>No. of Sentences</th>
+                <th>Stop Word Count</th>
+                <th>UPOS Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in history_data %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>
+                        {% if row[4] is not none %}
+                            <div>
+                                {% for key, value in row[4].items() %}
+                                    <div><strong>{{ key }}:</strong> {{ value }}</div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
