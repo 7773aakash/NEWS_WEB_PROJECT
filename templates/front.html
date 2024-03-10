@@ -249,18 +249,20 @@ body {
     
     <h1>News Analyzer Pro</h1>
     
-    <form method="POST" action="/">
+    <form method="POST" action="/u">
         <label for="url">Enter News Article URL:</label>
         <input type="text" name="url" required>
         <input type="submit" value="Submit">
     </form>
 
     
-    <a href="/history_password" class="history-password-button">History via Password</a>
+<!--     <a href="/history_password" class="history-password-button">History via Password</a> -->
+            <a href="{{ url_for('history_password') }}" class="history-password-button">History via Password</a>
     
     {% if error_message %}
     <div style="color: red; text-align: center; margin-top: 20px;">
-        <p>{{ error_message }}</p>
+<!--         <p>{{ error_message }}</p> -->
+            <p> PLese enter the news url of Times of India</p>
     </div>
 {% endif %}
 
