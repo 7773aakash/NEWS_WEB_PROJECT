@@ -20,6 +20,7 @@ import nltk
 import json
 import re
 from nltk import sent_tokenize, word_tokenize, pos_tag
+nltk.download('all')
 import psycopg2
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
