@@ -166,7 +166,7 @@ def history_password():
 
         if password_attempt == correct_password:
             # Password is correct, render the history page
-            cur.execute("SELECT * FROM url_summary_table")
+            cur.execute("select * from url_summary_table")
             history_data = cur.fetchall()
             return render_template('history.html', history_data=history_data)
         else:
