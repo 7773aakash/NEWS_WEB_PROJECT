@@ -9,9 +9,7 @@ Create a Flask WebApp which takes a news article URL form the user and does the 
 
 4. There should be a button on the website to view history of URLs submitted and the associated analysis done. This should only be visible and accessible by the website admin.
 
-5. Host this website and PostgreSQL database on www.render.com [free tier of 3 months]. Do not enter your bank information anywhere.
 
-6. Create a detailed PDF report of the algorithm used and show output for a few test cases.
 '''
 from flask import Flask, render_template, request, redirect, url_for, session
 import requests
@@ -91,34 +89,7 @@ def contact():
 
 
 
-# @app.route('/u', methods=['POST'])
-# def process_url():
-#     url = request.form['url']
-#     news_data = extract_and_clean_news_text(url)
 
-#     # Access the title, cleaned text, and analysis separately
-#     title = news_data['title']
-#     cleaned_text = news_data['cleaned_text']
-
-#     analysis = analyze_text(cleaned_text)
-
-#     # Generate word cloud
-#     wordcloud_img = generate_wordcloud(cleaned_text)
-#     sentiment_labels, sentiment_percentages = calculate_sentiment(cleaned_text)
-#     # Generate summary
-#     summary = generate_summary(cleaned_text, num_sentences=11)
-
-#     # Insert data into the PostgreSQL database
-#     cur.execute(
-#         "INSERT INTO url_summary_table (url, text, no_of_sentences, stop_words, upos_tags) VALUES (%s, %s, %s, %s, %s)",
-#         (url, cleaned_text, analysis["no_of_sentences"], analysis["stop_word_count"],
-#          json.dumps(analysis['upos_tags'])))
-#     conn.commit()
-
-#     # Display the title and analysis on the website
-#     return render_template('front.html', url=url, title=title, cleaned_text=cleaned_text, analysis=analysis,
-#                            wordcloud_img=wordcloud_img, sentiment_labels=sentiment_labels,
-#                            sentiment_percentages=sentiment_percentages, summary=summary)
 @app.route('/u', methods=['POST'])
 def process_url():
     try:
