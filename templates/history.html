@@ -47,31 +47,27 @@
     </style>
 </head>
 <body>
+
     <h1>URL History</h1>
 
-    
-    
-    <table>
-        <thead>
-            <tr>
-                <th>URL</th>
-                <th>Cleaned Text</th>
-                <th>No. of Sentences</th>
-                <th>Stop Word Count</th>
-                <th>UPOS Tags</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in history_data %}
-                <tr>
-                    <td>{{ row[0] }}</td>
-                    <td>{{ row[1] }}</td>
-                    <td>{{ row[2] }}</td>
-                    <td>{{ row[3] }}</td>
-                    <td>{{ analysis.upos_tags }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
+    <table border="1">
+        <tr>
+            <th>URL</th>
+            <th>Text</th>
+            <th>No. of Sentences</th>
+            <th>Stop Words</th>
+            <th>POS Tags</th>
+        </tr>
+        {% for row in history_data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
     </table>
+
 </body>
 </html>
