@@ -64,11 +64,11 @@ cur = conn.cursor()
 cur.execute("""
     CREATE TABLE IF NOT EXISTS url_summary_table (
         
-        url VARCHAR(2000) NOT NULL,
-        text  VARCHAR(100000),
+        url VARCHAR NOT NULL,
+        text  VARCHAR,
         no_of_sentences INTEGER,
         stop_words INTEGER,
-        upos_tags varchar(1000000)
+        upos_tags JSONB
     )
 """)
 conn.commit()
