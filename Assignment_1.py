@@ -165,6 +165,7 @@ def history_password():
         correct_password = "@7773"  # Password to go histry page
 
         if password_attempt == correct_password:
+            cur = conn.cursor()
             # Password is correct, render the history page
             cur.execute("select * from url_summary_table")
             history_data = cur.fetchall()
@@ -317,14 +318,11 @@ def github_authorize():
         if logged_in_username in github_admin_usernames:
             # Fetch data from the PostgreSQL database
             cur = conn.cursor()
+            cur = conn.cursor()
             cur.execute("SELECT * FROM url_summary_table")
             history_data = cur.fetchall()
             # conn.close()
-
-
             return render_template('history.html', history_data=history_data)
-
-           
         else:
             return redirect(url_for('index'))
     except:
