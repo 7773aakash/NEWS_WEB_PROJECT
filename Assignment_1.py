@@ -68,7 +68,7 @@ cur.execute("""
         text  VARCHAR(100000),
         no_of_sentences INTEGER,
         stop_words INTEGER,
-        upos_tags JSON
+        upos_tags varchar(1000000)
     )
 """)
 conn.commit()
