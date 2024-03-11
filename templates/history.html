@@ -64,11 +64,7 @@
             <td>{{ row[1] }}</td>
             <td>{{ row[2] }}</td>
             <td>{{ row[3] }}</td>
-            <td>
-                {% for key, value in row[4].items() %}
-                    {{ key }}: {{ value }}<br>
-                {% endfor %}
-            </td>
+            <td>{{ row[4] }}</td>
         </tr>
         {% endfor %}
     </table>
