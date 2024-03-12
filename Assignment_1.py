@@ -63,7 +63,7 @@ cur.execute("""
     CREATE TABLE IF NOT EXISTS url_summary_table (
         
         url VARCHAR NOT NULL,
-        text  VARCHAR,
+        text  TEXT,
         no_of_sentences INTEGER,
         stop_words INTEGER,
         upos_tags JSONB
