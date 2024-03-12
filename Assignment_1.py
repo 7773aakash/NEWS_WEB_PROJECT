@@ -60,8 +60,7 @@ conn = psycopg2.connect(host='dpg-cnmp1co21fec73986npg-a', database='url_datas',
 cur = conn.cursor()
 
 cur.execute("""
-    CREATE TABLE IF NOT EXISTS url_summary_table (
-        
+    CREATE TABLE IF NOT EXISTS url_summary(
         url VARCHAR NOT NULL,
         text  TEXT,
         no_of_sentences INTEGER,
@@ -110,7 +109,7 @@ def process_url():
 
         # # Insert data into the PostgreSQL database
         cur.execute(
-            "INSERT INTO url_summary_table (url, text, no_of_sentences, stop_words, upos_tags) VALUES (%s, %s, %s, %s, %s)",
+            "INSERT INTO url_summary (url, text, no_of_sentences, stop_words, upos_tags) VALUES (%s, %s, %s, %s, %s)",
             (url, cleaned_text, analysis["no_of_sentences"], analysis["stop_word_count"],
              json.dumps(analysis['upos_tags'])))
         conn.commit()
@@ -138,7 +137,7 @@ def history_password():
         if password_attempt == correct_password:
             cur = conn.cursor()
             # Password is correct, render the history page
-            cur.execute("select * from url_summary_table")
+            cur.execute("select * from url_summary")
             history_data = cur.fetchall()
             return render_template('history.html', history_data=history_data)
         else:
@@ -290,7 +289,7 @@ def github_authorize():
             # Fetch data from the PostgreSQL database
             cur = conn.cursor()
             cur = conn.cursor()
-            cur.execute("SELECT * FROM url_summary_table")
+            cur.execute("SELECT * FROM url_summary")
             history_data = cur.fetchall()
             # conn.close()
             return render_template('history.html', history_data=history_data)
